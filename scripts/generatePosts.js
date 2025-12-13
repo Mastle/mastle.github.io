@@ -1,14 +1,14 @@
-import { readFile, writeFile } from 'fs/promises';
-import { join } from 'path';
-import { marked } from 'marked';
+import { readFile, writeFile } from "fs/promises"
+import { join } from "path"
+import { marked } from "marked"
 
-const markdownFilePath = join(process.cwd(), 'data/sample-blog-post.md');
-const outputFilePath = join(process.cwd(), 'blog/sample-blog-post/index.html');
+const markdownFilePath = join(process.cwd(), "data/sample-blog-post.md")
+const outputFilePath = join(process.cwd(), "blog/sample-blog-post/index.html")
 
 async function generatePost() {
   try {
-    const data = await readFile(markdownFilePath, 'utf-8');
-    const htmlContent = marked.parse(data);
+    const data = await readFile(markdownFilePath, "utf-8")
+    const htmlContent = marked.parse(data)
 
     const htmlTemplate = `
 <!DOCTYPE html>
@@ -75,7 +75,9 @@ async function generatePost() {
       </article>
       <footer class="flex">
         <div class="container flex container--visible">
-          <span>Ingenuity, dedication & excellence</span>
+          <span>Ethical</span>
+  <span>Efficient</span>
+<span>Unmatched</span>
           <div class="footer-icons-container flex">
             <a
               href="https://bsky.app/profile/taqidev.bsky.social"
@@ -111,12 +113,12 @@ async function generatePost() {
 </html>
 
 
-`;
-    await writeFile(outputFilePath, htmlTemplate);
-    console.log('HTML file generated successfully:', outputFilePath);
+`
+    await writeFile(outputFilePath, htmlTemplate)
+    console.log("HTML file generated successfully:", outputFilePath)
   } catch (err) {
-    console.error('Error:', err);
+    console.error("Error:", err)
   }
 }
 
-generatePost();
+generatePost()
